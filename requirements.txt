@@ -1,8 +1,10 @@
 pandas
 numpy
-scikit-learn xgboost
+scikit-learn
+xgboost
 lifelines
 streamlit
 plotly
-duckdb 
+duckdb
 sqlalchemy
+statsmodels
