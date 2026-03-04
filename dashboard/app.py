@@ -30,12 +30,13 @@ st.markdown("""
     .metric-card {
         background: white;
         border-radius: 10px;
-        padding: 20px;
+        padding: 16px 10px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.07);
         text-align: center;
+        overflow: hidden;
     }
-    .metric-value { font-size: 2rem; font-weight: 700; color: #1a5276; }
-    .metric-label { font-size: 0.85rem; color: #666; margin-top: 4px; }
+    .metric-value { font-size: 1.4rem; font-weight: 700; color: #1a5276; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .metric-label { font-size: 0.78rem; color: #666; margin-top: 4px; }
     .risk-high   { color: #e74c3c; font-weight: 600; }
     .risk-medium { color: #f39c12; font-weight: 600; }
     .risk-low    { color: #27ae60; font-weight: 600; }
@@ -111,30 +112,15 @@ if page == "📊 Overview":
 
     c1, c2, c3, c4, c5 = st.columns(5)
     with c1:
-        st.markdown(f"""<div class="metric-card">
-            <div class="metric-value">{total:,}</div>
-            <div class="metric-label">Total Merchants</div>
-        </div>""", unsafe_allow_html=True)
+        st.metric("Total Merchants", f"{total:,}")
     with c2:
-        st.markdown(f"""<div class="metric-card">
-            <div class="metric-value" style="color:#e74c3c">{churn_rate:.1f}%</div>
-            <div class="metric-label">Churn Rate</div>
-        </div>""", unsafe_allow_html=True)
+        st.metric("Churn Rate", f"{churn_rate:.1f}%")
     with c3:
-        st.markdown(f"""<div class="metric-card">
-            <div class="metric-value" style="color:#e74c3c">{high_risk:,}</div>
-            <div class="metric-label">High Risk Merchants</div>
-        </div>""", unsafe_allow_html=True)
+        st.metric("High Risk Merchants", f"{high_risk:,}")
     with c4:
-        st.markdown(f"""<div class="metric-card">
-            <div class="metric-value">R${avg_rev:,.0f}</div>
-            <div class="metric-label">Median Revenue</div>
-        </div>""", unsafe_allow_html=True)
+        st.metric("Median Revenue", f"R${avg_rev:,.0f}")
     with c5:
-        st.markdown(f"""<div class="metric-card">
-            <div class="metric-value">{avg_review:.2f}</div>
-            <div class="metric-label">Avg Review Score</div>
-        </div>""", unsafe_allow_html=True)
+        st.metric("Avg Review Score", f"{avg_review:.2f}")
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -207,7 +193,7 @@ if page == "📊 Overview":
     fig.update_layout(
         yaxis_title="Total Revenue (R$)",
         xaxis_title="",
-        margin=dict(t=40, b=40, l=60, r=20),
+        margin=dict(t=60, b=40, l=60, r=20),
         height=300,
         paper_bgcolor="white",
         plot_bgcolor="#f8f9fa"
@@ -235,7 +221,7 @@ if page == "📊 Overview":
     ))
     fig.update_layout(
         xaxis_title = "Churn Rate (%)",
-        margin      = dict(t=20, b=40, l=180, r=60),
+        margin      = dict(t=20, b=40, l=180, r=80),
         height      = 420,
         paper_bgcolor="white",
         plot_bgcolor="#f8f9fa"
