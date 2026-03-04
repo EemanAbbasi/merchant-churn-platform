@@ -1,6 +1,6 @@
 """
-Merchant Churn Intelligence Platform
-Streamlit Dashboard:
+Stage 4: Merchant Churn Intelligence Platform
+Streamlit Dashboard — 4 pages:
 1. Overview
 2. Survival Analysis
 3. Churn Drivers
@@ -50,17 +50,18 @@ st.markdown("""
 
 import os
 
-# Base path relative to this file so it works both locally and on Streamlit Cloud
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Base path — works locally and on Streamlit Cloud
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 @st.cache_data
 def load_data():
-    scored       = pd.read_csv(os.path.join(BASE_DIR, "data/processed/scored_merchants.csv"))
-    km_overall   = pd.read_csv(os.path.join(BASE_DIR, "data/processed/km_overall.csv"))
-    km_segments  = pd.read_csv(os.path.join(BASE_DIR, "data/processed/km_segments.csv"))
-    hazard_ratios= pd.read_csv(os.path.join(BASE_DIR, "data/processed/hazard_ratios.csv"))
-    feat_imp     = pd.read_csv(os.path.join(BASE_DIR, "data/processed/feature_importance.csv"))
-    roc_curve    = pd.read_csv(os.path.join(BASE_DIR, "data/processed/roc_curve.csv"))
+    scored       = pd.read_csv(BASE_DIR / "data/processed/scored_merchants.csv")
+    km_overall   = pd.read_csv(BASE_DIR / "data/processed/km_overall.csv")
+    km_segments  = pd.read_csv(BASE_DIR / "data/processed/km_segments.csv")
+    hazard_ratios= pd.read_csv(BASE_DIR / "data/processed/hazard_ratios.csv")
+    feat_imp     = pd.read_csv(BASE_DIR / "data/processed/feature_importance.csv")
+    roc_curve    = pd.read_csv(BASE_DIR / "data/processed/roc_curve.csv")
     return scored, km_overall, km_segments, hazard_ratios, feat_imp, roc_curve
 
 scored, km_overall, km_segments, hazard_ratios, feat_imp, roc_curve = load_data()
