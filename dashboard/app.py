@@ -476,7 +476,6 @@ elif page == "🔍 Churn Drivers":
         color       = "risk_tier",
         color_discrete_map = RISK_COLORS,
         opacity     = 0.6,
-        trendline   = "lowess",
         labels      = {
             "avg_delivery_delay_days": "Avg Delivery Delay (days)",
             "churn_probability"      : "Churn Probability",
