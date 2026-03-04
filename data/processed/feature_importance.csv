@@ -1,0 +1,10 @@
+feature,importance
+total_orders,0.24673644
+days_active,0.13602032
+avg_delivery_delay_days,0.10294919
+total_reviews,0.09711231
+avg_review_score,0.09331796
+top_category,0.09166736
+unique_products,0.08208222
+total_revenue,0.07683821
+avg_order_value,0.07327599
